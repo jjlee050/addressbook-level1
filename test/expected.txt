@@ -268,6 +268,27 @@
 || 
 || 2 persons found!
 || ===================================================
+|| Enter command: || [Command entered:  add Joseph Lee p/111111 e/adam@gmail.com]
+|| New person added: Joseph Lee, Phone: 111111, Email: adam@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	3. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
+|| 
+|| 3 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add Jon Lee p/222222 e/betty@gmail.com]
+|| New person added: Jon Lee, Phone: 222222, Email: betty@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	3. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
+|| 	4. Jon Lee  Phone Number: 222222  Email: betty@gmail.com
+|| 
+|| 4 persons found!
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================

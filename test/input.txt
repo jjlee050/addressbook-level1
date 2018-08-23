@@ -92,10 +92,16 @@
   list
 
 ##########################################################
-# test clear command
+# test clear command //My additional test cases
 ##########################################################
 
-  # clears all
+  # add something
+  add Joseph Lee p/111111 e/adam@gmail.com
+  list
+  add Jon Lee p/222222 e/betty@gmail.com
+  list
+
+  # clears all despite data has not been deleted
   clear
   list
 
