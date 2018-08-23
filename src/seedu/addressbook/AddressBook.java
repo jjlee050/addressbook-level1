@@ -196,7 +196,6 @@ public class AddressBook {
    * referenced by the high-level method below.
    * ====================================================================
    */
-
   public static void main(String[] args) {
     showWelcomeMessage();
     processProgramArgs(args);
@@ -1138,12 +1137,12 @@ public class AddressBook {
   /**
    * Removes sign(p/, d/, etc) from parameter string
    *
-   * @param s  Parameter as a string
-   * @param sign  Parameter sign to be removed
+   * @param fullString  Parameter as a string
+   * @param prefix  Parameter sign to be removed
    * @return  string without the sign
    */
-  private static String removePrefixSign(String s, String sign) {
-    return s.replace(sign, "");
+  private static String removePrefixSign(String fullString, String prefix) {
+    return fullString.replace(prefix, "");
   }
 
   /**
