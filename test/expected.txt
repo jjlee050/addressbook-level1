@@ -69,8 +69,12 @@
 || clear: Clears address book permanently.
 || 	Example: clear
 || 
+|| sort: Sort address book in alphabetical order.
+|| 	Example: sort
+|| 
 || exit: Exits the program.	Example: exit
 || help: Shows program usage instructions.	Example: help
+|| 
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
@@ -148,6 +152,17 @@
 || 
 || 3 persons found!
 || ===================================================
+|| Enter command: || [Command entered:  add Peter Sam e/peter@nus.edu.sg p/123456]
+|| New person added: Peter Sam, Phone: 123456, Email: peter@nus.edu.sg
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	4. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
+|| 
+|| 4 persons found!
+|| ===================================================
 || Enter command: || [Command entered:  add Dickson Ee e/dickson@nus.edu.sg p/444444]
 || New person added: Dickson Ee, Phone: 444444, Email: dickson@nus.edu.sg
 || ===================================================
@@ -155,9 +170,10 @@
 || 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
 || 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
-|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	4. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
+|| 	5. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
 || 
-|| 4 persons found!
+|| 5 persons found!
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@notreal.potato]
 || New person added: Esther Potato, Phone: 555555, Email: esther@notreal.potato
@@ -166,10 +182,24 @@
 || 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
 || 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	4. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
+|| 	5. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	6. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 
+|| 6 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| Address book has been sorted.
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
 || 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
 || 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 	6. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
 || 
-|| 5 persons found!
+|| 6 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find]
 || 
@@ -246,8 +276,9 @@
 || 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
 || 	4. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 	5. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
 || 
-|| 4 persons found!
+|| 5 persons found!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
 || Deleted Person: Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
@@ -256,8 +287,9 @@
 || 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
 || 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	4. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
 || 
-|| 3 persons found!
+|| 4 persons found!
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || Deleted Person: Adam Brown  Phone Number: 111111  Email: adam@gmail.com
@@ -265,8 +297,9 @@
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	3. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
 || 
-|| 2 persons found!
+|| 3 persons found!
 || ===================================================
 || Enter command: || [Command entered:  add Joseph Lee p/111111 e/adam@gmail.com]
 || New person added: Joseph Lee, Phone: 111111, Email: adam@gmail.com
@@ -274,9 +307,10 @@
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
-|| 	3. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
+|| 	3. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
+|| 	4. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
 || 
-|| 3 persons found!
+|| 4 persons found!
 || ===================================================
 || Enter command: || [Command entered:  add Jon Lee p/222222 e/betty@gmail.com]
 || New person added: Jon Lee, Phone: 222222, Email: betty@gmail.com
@@ -284,10 +318,11 @@
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
-|| 	3. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
-|| 	4. Jon Lee  Phone Number: 222222  Email: betty@gmail.com
+|| 	3. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
+|| 	4. Joseph Lee  Phone Number: 111111  Email: adam@gmail.com
+|| 	5. Jon Lee  Phone Number: 222222  Email: betty@gmail.com
 || 
-|| 4 persons found!
+|| 5 persons found!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
