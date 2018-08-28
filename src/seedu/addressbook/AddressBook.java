@@ -498,7 +498,6 @@ public class AddressBook {
    */
   private static ArrayList<HashMap<PersonProperty, String>> getPersonsWithNameContainingAnyKeyword(
       Collection<String> keywords) {
-    //TODO: Make find command case-insensitive.
     final ArrayList<HashMap<PersonProperty, String>> matchedPersons = new ArrayList<>();
     for (HashMap<PersonProperty, String> person : getAllPersonsInAddressBook()) {
       final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person).toLowerCase()));
