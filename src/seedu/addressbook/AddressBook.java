@@ -607,8 +607,9 @@ public class AddressBook {
    * @return feedback display message for the operation result
    */
   private static String executeSortAllPersonsInAddressBook() {
-    sortAllPersonsInAddressBook();
-    return MESSAGE_ADDRESSBOOK_SORTED;
+    ArrayList<HashMap<PersonProperty, String>> toBeDisplayed = sortAllPersonsInAddressBook();
+    showToUser(toBeDisplayed);
+    return MESSAGE_ADDRESSBOOK_SORTED + LS + getMessageForPersonsDisplayedSummary(toBeDisplayed);
   }
 
   /**
@@ -850,10 +851,12 @@ public class AddressBook {
    * 
    * @return Sorted address book
    */
-  private static void sortAllPersonsInAddressBook() {
+  private static ArrayList<HashMap<PersonProperty, String>> sortAllPersonsInAddressBook() {
     Comparator<HashMap<PersonProperty, String>> personComparator = Comparator.comparing(x -> x.get(PersonProperty.NAME));
-    ALL_PERSONS.sort(personComparator);
-    savePersonsToFile(getAllPersonsInAddressBook(), storageFilePath);
+    ArrayList<HashMap<PersonProperty, String>> sortedPersonsList = getAllPersonsInAddressBook();
+    sortedPersonsList.sort(personComparator);
+    savePersonsToFile(sortedPersonsList, storageFilePath);
+    return sortedPersonsList;
   }
 
   /**

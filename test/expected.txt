@@ -62,15 +62,15 @@
 || list: Displays all persons as a list with index numbers.
 || 	Example: list
 || 
+|| sort: Sort address book in alphabetical order.
+|| 	Example: sort
+|| 
 || delete: Deletes a person identified by the index number used in the last find/list call.
 || 	Parameters: INDEX
 || 	Example: delete 1
 || 
 || clear: Clears address book permanently.
 || 	Example: clear
-|| 
-|| sort: Sort address book in alphabetical order.
-|| 	Example: sort
 || 
 || exit: Exits the program.	Example: exit
 || help: Shows program usage instructions.	Example: help
@@ -189,9 +189,6 @@
 || 6 persons found!
 || ===================================================
 || Enter command: || [Command entered:  sort]
-|| Address book has been sorted.
-|| ===================================================
-|| Enter command: || [Command entered:  list]
 || 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
 || 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
 || 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
@@ -199,6 +196,7 @@
 || 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
 || 	6. Peter Sam  Phone Number: 123456  Email: peter@nus.edu.sg
 || 
+|| Address book has been sorted.
 || 6 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find]
