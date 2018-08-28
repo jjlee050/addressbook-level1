@@ -1006,10 +1006,11 @@ public class AddressBook {
         final String matchAnyPersonDataPrefix =
             PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
-        return splitArgs.length == 3 // 3 arguments
+        boolean isDataExtractable = splitArgs.length == 3 // 3 arguments
             && !splitArgs[0].isEmpty() // non-empty arguments
             && !splitArgs[1].isEmpty()
             && !splitArgs[2].isEmpty();
+        return isDataExtractable;
     }
 
     /**
@@ -1038,7 +1039,7 @@ public class AddressBook {
 
         // phone is last arg, target is from prefix to end of string
         if (indexOfPhonePrefix > indexOfEmailPrefix) {
-            return removePrefix(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
+            return removePrefix(encoded.substring(indexOfPhonePrefix).trim(),
                 PERSON_DATA_PREFIX_PHONE);
 
             // phone is middle arg, target is from own prefix to next prefix
@@ -1061,7 +1062,7 @@ public class AddressBook {
 
         // email is last arg, target is from prefix to end of string
         if (indexOfEmailPrefix > indexOfPhonePrefix) {
-            return removePrefix(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
+            return removePrefix(encoded.substring(indexOfEmailPrefix).trim(),
                 PERSON_DATA_PREFIX_EMAIL);
 
             // email is middle arg, target is from own prefix to next prefix
@@ -1078,9 +1079,10 @@ public class AddressBook {
      * @param person String array representing the person (used in internal data)
      */
     private static boolean isPersonDataValid(HashMap<PersonProperty, String> person) {
-        return isPersonNameValid(person.get(PersonProperty.NAME))
+        boolean isPersonValid = isPersonNameValid(person.get(PersonProperty.NAME))
             && isPersonPhoneValid(person.get(PersonProperty.PHONE))
             && isPersonEmailValid(person.get(PersonProperty.EMAIL));
+        return isPersonValid;
     }
 
     /*
