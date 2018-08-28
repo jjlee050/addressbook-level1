@@ -180,23 +180,19 @@ public class AddressBook {
     /**
      * Different elements of a person for HashMap.
      */
-    //TODO: Add aditional field to a person record.
     private enum PersonProperty {
         NAME, EMAIL, PHONE
     }
-
     /**
      * List of all persons in the address book.
      */
     private static final ArrayList<HashMap<PersonProperty, String>> ALL_PERSONS = new ArrayList<>();
-
     /**
      * Stores the most recent list of persons shown to the user as a result of a user command. This is a
      * subset of the full list. Deleting persons in the pull list does not delete those persons from this
      * list.
      */
     private static ArrayList<HashMap<PersonProperty, String>> latestPersonListingView = getAllPersonsInAddressBook(); // initial view is of all
-
     /**
      * The path to the file used for storing person data.
      */
@@ -224,6 +220,10 @@ public class AddressBook {
         }
     }
 
+    private static void showWelcomeMessage() {
+        showToUser(DIVIDER, DIVIDER, VERSION, MESSAGE_WELCOME, DIVIDER);
+    }
+
     /*
      * NOTE : =============================================================
      * The method header comment can be omitted if the method is trivial
@@ -232,12 +232,15 @@ public class AddressBook {
      * ====================================================================
      */
 
-    private static void showWelcomeMessage() {
-        showToUser(DIVIDER, DIVIDER, VERSION, MESSAGE_WELCOME, DIVIDER);
-    }
-
     private static void showResultToUser(String result) {
         showToUser(result, DIVIDER);
+    }
+
+    /**
+     * Echoes the user input back to the user.
+     */
+    private static void echoUserCommand(String userCommand) {
+        showToUser("[Command entered:" + userCommand + "]");
     }
 
     /*
@@ -247,13 +250,6 @@ public class AddressBook {
      * In the method below, '@param userInput' comment has been omitted.
      * ====================================================================
      */
-
-    /**
-     * Echoes the user input back to the user.
-     */
-    private static void echoUserCommand(String userCommand) {
-        showToUser("[Command entered:" + userCommand + "]");
-    }
 
     /**
      * Processes the program main method run arguments. If a valid storage file is specified, sets up that
@@ -348,13 +344,6 @@ public class AddressBook {
         initialiseAddressBookModel(loadPersonsFromFile(storageFilePath));
     }
 
-
-    /*
-     * ===========================================
-     *           COMMAND LOGIC
-     * ===========================================
-     */
-
     /**
      * Executes the command as specified by the {@code userInputString}
      *
@@ -365,7 +354,6 @@ public class AddressBook {
         final String[] commandTypeAndParams = splitCommandWordAndArgs(userInputString);
         final String commandType = commandTypeAndParams[0];
         final String commandArgs = commandTypeAndParams[1];
-        //TODO: Add edit command to edit a person properties.
         switch (commandType) {
         case COMMAND_ADD_WORD:
             return executeAddPerson(commandArgs);
@@ -387,6 +375,13 @@ public class AddressBook {
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
     }
+
+
+    /*
+     * ===========================================
+     *           COMMAND LOGIC
+     * ===========================================
+     */
 
     /**
      * Splits raw user input into command word and command arguments string
@@ -602,7 +597,9 @@ public class AddressBook {
     private static String executeSortAllPersonsInAddressBook() {
         ArrayList<HashMap<PersonProperty, String>> toBeDisplayed = sortAllPersonsInAddressBook();
         showToUser(toBeDisplayed);
-        return MESSAGE_ADDRESSBOOK_SORTED + LS + getMessageForPersonsDisplayedSummary(toBeDisplayed);
+        String displayMessage =
+            MESSAGE_ADDRESSBOOK_SORTED + LS + getMessageForPersonsDisplayedSummary(toBeDisplayed);
+        return displayMessage;
     }
 
     /**
@@ -611,12 +608,6 @@ public class AddressBook {
     private static void executeExitProgramRequest() {
         exitProgram();
     }
-
-    /*
-     * ===========================================
-     *               UI LOGIC
-     * ===========================================
-     */
 
     /**
      * Prompts for the command and reads the text entered by the user. Ignores lines with first non-whitespace
@@ -635,10 +626,9 @@ public class AddressBook {
     }
 
     /*
-     * NOTE : =============================================================
-     * Note how the method below uses Java 'Varargs' feature so that the
-     * method can accept a varying number of message parameters.
-     * ====================================================================
+     * ===========================================
+     *               UI LOGIC
+     * ===========================================
      */
 
     /**
@@ -649,6 +639,13 @@ public class AddressBook {
             System.out.println(LINE_PREFIX + m);
         }
     }
+
+    /*
+     * NOTE : =============================================================
+     * Note how the method below uses Java 'Varargs' feature so that the
+     * method can accept a varying number of message parameters.
+     * ====================================================================
+     */
 
     /**
      * Shows the list of persons to the user. The list will be indexed, starting from 1.
@@ -719,13 +716,6 @@ public class AddressBook {
         return latestPersonListingView.get(lastVisibleIndex - DISPLAYED_INDEX_OFFSET);
     }
 
-
-    /*
-     * ===========================================
-     *             STORAGE LOGIC
-     * ===========================================
-     */
-
     /**
      * Creates storage file if it does not exist. Shows feedback to user.
      *
@@ -747,6 +737,13 @@ public class AddressBook {
             exitProgram();
         }
     }
+
+
+    /*
+     * ===========================================
+     *             STORAGE LOGIC
+     * ===========================================
+     */
 
     /**
      * Converts contents of a file into a list of persons. Shows error messages and exits program if any
@@ -799,13 +796,6 @@ public class AddressBook {
         }
     }
 
-
-    /*
-     * ================================================================================
-     *        INTERNAL ADDRESS BOOK DATA METHODS
-     * ================================================================================
-     */
-
     /**
      * Adds a person to the address book. Saves changes to storage file.
      *
@@ -815,6 +805,13 @@ public class AddressBook {
         ALL_PERSONS.add(person);
         savePersonsToFile(getAllPersonsInAddressBook(), storageFilePath);
     }
+
+
+    /*
+     * ================================================================================
+     *        INTERNAL ADDRESS BOOK DATA METHODS
+     * ================================================================================
+     */
 
     /**
      * Deletes the specified person from the addressbook if it is inside. Saves any changes to storage file.
@@ -871,13 +868,6 @@ public class AddressBook {
         ALL_PERSONS.addAll(persons);
     }
 
-
-    /*
-     * ===========================================
-     *             PERSON METHODS
-     * ===========================================
-     */
-
     /**
      * Returns the given person's name
      *
@@ -886,6 +876,13 @@ public class AddressBook {
     private static String getNameFromPerson(HashMap<PersonProperty, String> person) {
         return person.get(PersonProperty.NAME);
     }
+
+
+    /*
+     * ===========================================
+     *             PERSON METHODS
+     * ===========================================
+     */
 
     /**
      * Returns given person's phone number
@@ -948,13 +945,6 @@ public class AddressBook {
         return encoded;
     }
 
-    /*
-     * NOTE : =============================================================
-     * Note the use of Java's new 'Optional' feature to indicate that
-     * the return value may not always be present.
-     * ====================================================================
-     */
-
     /**
      * Decodes a person from it's supposed string representation.
      *
@@ -975,6 +965,13 @@ public class AddressBook {
         // check that the constructed person is valid
         return isPersonDataValid(decodedPerson) ? Optional.of(decodedPerson) : Optional.empty();
     }
+
+    /*
+     * NOTE : =============================================================
+     * Note the use of Java's new 'Optional' feature to indicate that
+     * the return value may not always be present.
+     * ====================================================================
+     */
 
     /**
      * Decodes persons from a list of string representations.
@@ -1085,14 +1082,6 @@ public class AddressBook {
         return isPersonValid;
     }
 
-    /*
-     * NOTE : =============================================================
-     * Note the use of 'regular expressions' in the method below.
-     * Regular expressions can be very useful in checking if a a string
-     * follows a specific format.
-     * ====================================================================
-     */
-
     /**
      * Returns true if the given string as a legal person name
      *
@@ -1102,6 +1091,14 @@ public class AddressBook {
         return name.matches("(\\w|\\s)+");  // name is nonempty mixture of alphabets and whitespace
         //TODO: implement a more permissive validation
     }
+
+    /*
+     * NOTE : =============================================================
+     * Note the use of 'regular expressions' in the method below.
+     * Regular expressions can be very useful in checking if a a string
+     * follows a specific format.
+     * ====================================================================
+     */
 
     /**
      * Returns true if the given string as a legal person phone number
@@ -1125,13 +1122,6 @@ public class AddressBook {
         //TODO: implement a more permissive validation
     }
 
-
-    /*
-     * ===============================================
-     *         COMMAND HELP INFO FOR USERS
-     * ===============================================
-     */
-
     /**
      * Returns usage info for all commands
      */
@@ -1145,6 +1135,13 @@ public class AddressBook {
             + getUsageInfoForExitCommand() + LS
             + getUsageInfoForHelpCommand() + LS;
     }
+
+
+    /*
+     * ===============================================
+     *         COMMAND HELP INFO FOR USERS
+     * ===============================================
+     */
 
     /**
      * Returns the string for showing 'add' command usage instruction
@@ -1213,13 +1210,6 @@ public class AddressBook {
             + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_SORT_EXAMPLE) + LS;
     }
 
-
-    /*
-     * ============================
-     *         UTILITY METHODS
-     * ============================
-     */
-
     /**
      * Removes prefix from the given fullString if prefix occurs at the start of the string.
      *
@@ -1231,6 +1221,13 @@ public class AddressBook {
         return fullString.replace(prefix, "");
     }
 
+
+    /*
+     * ============================
+     *         UTILITY METHODS
+     * ============================
+     */
+
     /**
      * Splits a source string into the list of substrings that were separated by whitespace.
      *
@@ -1240,5 +1237,4 @@ public class AddressBook {
     private static ArrayList<String> splitByWhitespace(String toSplit) {
         return new ArrayList<>(Arrays.asList(toSplit.trim().split("\\s+")));
     }
-
 }
