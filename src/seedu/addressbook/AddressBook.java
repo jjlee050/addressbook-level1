@@ -844,10 +844,10 @@ public class AddressBook {
      * @return Sorted address book
      */
     private static ArrayList<HashMap<PersonProperty, String>> sortAllPersonsInAddressBook() {
-        Comparator<HashMap<PersonProperty, String>> personComparator = Comparator
+        Comparator<HashMap<PersonProperty, String>> sortPersonByNameComparator = Comparator
             .comparing(x -> x.get(PersonProperty.NAME));
         ArrayList<HashMap<PersonProperty, String>> sortedPersonsList = getAllPersonsInAddressBook();
-        sortedPersonsList.sort(personComparator);
+        sortedPersonsList.sort(sortPersonByNameComparator);
         savePersonsToFile(sortedPersonsList, storageFilePath);
         return sortedPersonsList;
     }
